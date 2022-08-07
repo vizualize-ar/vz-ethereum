@@ -1,0 +1,23 @@
+{
+  description: "Star NFT",
+  image: "https://bafybeihslhol5draa26unhhe7j2crwedr4tyfrvmba5qt3kyxbvb5olk4i.ipfs.dweb.link/images/1.png",
+  name: "Star",
+  attributes: [
+      {
+          trait_type: "Background",
+          value: "White"
+      },
+      {
+          trait_type: "Hair Style",
+          value: "Long Straight Bangs"
+      },
+      {
+          trait_type: "Hair Color",
+          value: "Black"
+      },
+      {
+          trait_type: "Accessories",
+          value: ""
+      }
+  ]
+}
