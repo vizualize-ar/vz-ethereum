@@ -41,7 +41,8 @@ task("deploy", "Deploys the VizualizeNft.sol contract").setAction(async function
   const nftContractFactory = await hre.ethers.getContractFactory("VizualizeNft");
   // const nft = await nftContractFactory.deploy();
   // const nft = await hre.upgrades.deployProxy(nftContractFactory, ["VizualizeNFT", "VZNFT", "ipfs:/", "ipfs:/", [], transferProxyAddress, transferProxyAddress]);
-  const nft = await hre.upgrades.deployProxy(nftContractFactory, ["VizualizeNFT", "VZNFT", "https://", "ipfs:/", [], transferProxyAddress, transferProxyAddress]);
+  // const nft = await hre.upgrades.deployProxy(nftContractFactory, ["VZNFTDEV", "VZNFTDEV", "https://", "ipfs:/", [], transferProxyAddress, transferProxyAddress]);
+  const nft = await hre.upgrades.deployProxy(nftContractFactory, ["VZNFTDEV2", "VZNFTDEV2", "ipfs://", "ipfs://", [], transferProxyAddress, transferProxyAddress]);
   await nft.deployed();
   console.log(`Contract deployed to address: ${nft.address}`);
 });

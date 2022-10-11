@@ -22,7 +22,9 @@ function getProvider() {
 //   return ethers.getDefaultProvider(getEnvVariable("NETWORK", "rinkeby"), {
 //     alchemy: getEnvVariable("ALCHEMY_KEY"),
 //   });
-    return new AlchemyProvider(getEnvVariable("NETWORK", "rinkeby"), getEnvVariable("ALCHEMY_KEY"));
+  const network = getEnvVariable("NETWORK", "rinkeby");
+  console.log(`Network: ${network}`);
+  return new AlchemyProvider(network, getEnvVariable("ALCHEMY_KEY"));
 }
 
 // Helper method for fetching a wallet account using an environment variable for the PK
@@ -113,7 +115,7 @@ async function getSignature(
   return signature;
 }
 
-function creators(list: any[]) {
+function creators(list: { address: string }[]) {
   const value = 10000 / list.length;
   return list.map((account: any) => ({ account: account.address, value }));
 }

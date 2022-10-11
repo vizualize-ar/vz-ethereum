@@ -7,7 +7,7 @@ import "./scripts/deploy";
 import "./scripts/mint";
 
 dotenv.config();
-const { ALCHEMY_KEY, ACCOUNT_PRIVATE_KEY, MUMBAI_PRIVATE_KEY, ETHERSCAN_API_KEY, POLYGONSCAN_API_KEY } =
+const { ALCHEMY_KEY, ACCOUNT_PRIVATE_KEY, POLYGON_PRIVATE_KEY, ETHERSCAN_API_KEY, POLYGONSCAN_API_KEY } =
   process.env;
 
 const config: HardhatUserConfig = {
@@ -39,10 +39,15 @@ const config: HardhatUserConfig = {
     },
     maticmum: {
       url: `https://polygon-mumbai.g.alchemy.com/v2/${ALCHEMY_KEY}`,
-      accounts: [`0x${MUMBAI_PRIVATE_KEY}`],
+      accounts: [`0x${ACCOUNT_PRIVATE_KEY}`],
       allowUnlimitedContractSize: true,
       gas: 'auto'
     },
+    matic: {
+      url: `https://polygon-mainnet.g.alchemy.com/v2/${ALCHEMY_KEY}`,
+      accounts: [`0x${ACCOUNT_PRIVATE_KEY}`],
+      gas: 'auto',
+    }
   },
   etherscan: {
     apiKey: POLYGONSCAN_API_KEY,

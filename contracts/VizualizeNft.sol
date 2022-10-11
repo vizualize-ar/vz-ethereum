@@ -78,12 +78,8 @@ contract VizualizeNft is ERC1155Rarible, PausableUpgradeable {
         }
     }
 
-    // function setBaseURI(string memory newBaseURI) public {
-    //     _setBaseURI(newBaseURI);
-    // }
-
-    function setBaseTokenURI(uint256 tokenId, string memory newBaseURI) public {
-        _setTokenURI(tokenId, newBaseURI);
+    function setTokenURI(uint256 tokenId, string memory newURI) public onlyOwner {
+        _setTokenURI(tokenId, newURI);
     }
 
     function _beforeTokenTransfer(
