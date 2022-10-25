@@ -5,7 +5,7 @@ import { getContract, getEnvVariable, getProvider, getSignature, creators, getAc
 
 import { VizualizeNft } from "../typechain-types";
 import { LibERC1155LazyMint } from "../typechain-types/contracts/VizualizeNft";
-import { ethers, Wallet } from "ethers";
+import { BigNumber, ethers, Wallet } from "ethers";
 
 const zeroWord =
   "0x0000000000000000000000000000000000000000000000000000000000000000";
@@ -86,6 +86,7 @@ task("set-base-uri", "Sets the baseURI in the contract")
   .setAction(async (taskArguments, hre) => {
     const contract = await getContract("VizualizeNft", hre) as VizualizeNft;
     console.log(`Updating base URI to ${taskArguments.baseuri}`)
+    
     const tx = await contract.setBaseURI(taskArguments.baseuri,
       {
         gasLimit: 5_000_000,
@@ -95,15 +96,26 @@ task("set-base-uri", "Sets the baseURI in the contract")
     console.log("Transaction hash %s", tx.hash);
   });
 
+// Eg., npx hardhat set-token-uri --tokenid 38312504226238262500385075860556867291744409460277345860262828688035962421249 --uri bafybeihdzv7c5afxvafjg2dpun3tdt23lu3l344rcnozxzyp7denj2cxme/metadata.json
 task("set-token-uri", "Sets a token URI in the contract")
   .addParam("tokenid", "The new token ID to set the URI for")  
   .addParam("uri", "The new token URI to set in the contract")
   .setAction(async (taskArguments, hre) => {
     const contract = await getContract("VizualizeNft", hre) as VizualizeNft;
-    const tx = await contract.setBaseTokenURI(taskArguments.tokenid, taskArguments.uri);
+
+    const gasPrice = await getProvider().getGasPrice();
+    const feeData = await getProvider().getFeeData();
+
+    console.log('gasPrice: %s, maxfeepergas: %s, maxPriorityFeePerGas: %s', gasPrice.toBigInt(), feeData.maxFeePerGas?.toBigInt(), feeData.maxPriorityFeePerGas?.toBigInt());
+
+    const tx = await contract.setTokenURI(taskArguments.tokenid, taskArguments.uri, {
+      gasLimit: 1_000_000,
+      gasPrice: gasPrice.toBigInt() * BigInt(2),
+    });
     console.log("Transaction hash %s", tx.hash);
   });
 
+// Eg., npx hardhat token-uri --tokenid 38312504226238262500385075860556867291744409460277345860262828688035962421249
 task("token-uri", "Fetches the token metadata for the given token ID")
   .addParam("tokenid", "The tokenID to fetch metadata for")
   .setAction(async function (taskArguments, hre) {

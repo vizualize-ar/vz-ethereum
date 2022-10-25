@@ -3,22 +3,33 @@
 
 // // Import this file to use console.log
 // import "hardhat/console.sol";
+// import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-// contract Lock {
+// contract Lock is Initializable {
 //     uint public unlockTime;
 //     address payable public owner;
 
 //     event Withdrawal(uint amount, uint when);
 
-//     constructor(uint _unlockTime) payable {
-//         require(
-//             block.timestamp < _unlockTime,
-//             "Unlock time should be in the future"
-//         );
+//     function initialize(uint _unlockTime) public payable initializer {
+//       require(
+//           block.timestamp < _unlockTime,
+//           "Unlock time should be in the future"
+//       );
 
-//         unlockTime = _unlockTime;
-//         owner = payable(msg.sender);
+//       unlockTime = _unlockTime;
+//       owner = payable(msg.sender);
 //     }
+
+//     // constructor(uint _unlockTime) payable {
+//     //     require(
+//     //         block.timestamp < _unlockTime,
+//     //         "Unlock time should be in the future"
+//     //     );
+
+//     //     unlockTime = _unlockTime;
+//     //     owner = payable(msg.sender);
+//     // }
 
 //     function withdraw() public {
 //         // Uncomment this line to print a log in your terminal

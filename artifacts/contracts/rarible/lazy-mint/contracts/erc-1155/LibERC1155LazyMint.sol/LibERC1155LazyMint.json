@@ -1,0 +1,37 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "LibERC1155LazyMint",
+  "sourceName": "contracts/rarible/lazy-mint/contracts/erc-1155/LibERC1155LazyMint.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "ERC1155_LAZY_ASSET_CLASS",
+      "outputs": [
+        {
+          "internalType": "bytes4",
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MINT_AND_TRANSFER_TYPEHASH",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x60ef610039600b82828239805160001a60731461002c57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe7300000000000000000000000000000000000000003014608060405260043610603d5760003560e01c80637987105f14604257806390c20c4314607b575b600080fd5b60687ffb988707ebb338694f318760b0fd5cfe756d00a2ade251fda110b80c336a3c7f81565b6040519081526020015b60405180910390f35b60a17f1cdfaa400bc064c91b5cc20e571cfcc92103980be96e01fb36dda1962d8d78cb81565b6040516001600160e01b03199091168152602001607256fea2646970667358221220c14873a9291412d2454257a2d2aae8ad30e6c2f16cfaaa86cc469a4fcc26ac0e64736f6c63430008090033",
+  "deployedBytecode": "0x7300000000000000000000000000000000000000003014608060405260043610603d5760003560e01c80637987105f14604257806390c20c4314607b575b600080fd5b60687ffb988707ebb338694f318760b0fd5cfe756d00a2ade251fda110b80c336a3c7f81565b6040519081526020015b60405180910390f35b60a17f1cdfaa400bc064c91b5cc20e571cfcc92103980be96e01fb36dda1962d8d78cb81565b6040516001600160e01b03199091168152602001607256fea2646970667358221220c14873a9291412d2454257a2d2aae8ad30e6c2f16cfaaa86cc469a4fcc26ac0e64736f6c63430008090033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
