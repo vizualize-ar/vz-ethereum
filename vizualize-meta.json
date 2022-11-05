@@ -1,0 +1,8 @@
+{
+  "name": "Vizualize",
+  "description": "https://vizualize.io NFTs",
+  "image": "https://cdn.vizualize.io/logo.png",
+  "external_link": "https://vizualize.io",
+  "seller_fee_basis_points": 300,
+  "fee_recipient": "0x22eB2093a9fD035c5FDc24e0164aB64C3a601739"
+}

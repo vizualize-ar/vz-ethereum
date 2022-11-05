@@ -5,6 +5,7 @@ import "@openzeppelin/hardhat-upgrades";
 
 import "./scripts/deploy";
 import "./scripts/mint";
+import "./scripts/update";
 
 dotenv.config();
 const { ALCHEMY_KEY, ACCOUNT_PRIVATE_KEY, POLYGON_PRIVATE_KEY, ETHERSCAN_API_KEY, POLYGONSCAN_API_KEY } =

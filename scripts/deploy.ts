@@ -114,3 +114,30 @@ task("deploy", "Deploys the VizualizeNft.sol contract").setAction(async function
 
   console.log(`Deployment finished. Proxy address ${proxy.address}. Contract address: ${contract.address}`);
 });
+
+task("update", "Updates the VizualizeNft contract").setAction(async function (
+  taskArguments: any,
+  hre: HardhatRuntimeEnvironment
+) {
+  console.log(`Network: ${process.env.NETWORK}`);
+
+  const [deployer] = await hre.ethers.getSigners();
+  const accountBalance = await deployer.getBalance();
+  const transferProxyAddress = process.env.POLYGON_TRANSFER_PROXY_ADDRESS;
+
+  console.log(`Deploying contracts with account: ${deployer.address} with proxy ${transferProxyAddress}`);
+  console.log("Account balance: ", accountBalance.toString());
+
+  const nftContractFactory = await hre.ethers.getContractFactory("VizualizeNft", deployer);
+  await hre.upgrades.validateImplementation(nftContractFactory);
+
+  console.log('Updating contract');  
+  const contractAddress: string = process.env.NFT_CONTRACT_ADDRESS + '';
+  const proxy = await hre.upgrades.upgradeProxy(contractAddress, nftContractFactory);
+  console.log(`Proxy address ${proxy.address}, tx hash ${proxy.deployTransaction?.hash}`)
+
+  console.log('Waiting for update to finish');
+  const contract = await proxy.deployed();
+
+  console.log(`Update finished. Proxy address ${proxy.address}. Contract address: ${contract.address}`);
+});
